@@ -17,26 +17,22 @@ class Student:
 
 
 class Teacher:
-    def __init__(self, name, id_teacher, administrator, assignatures):
+    def __init__(self, name, id_teacher, admin, assignatures):
         self.name = name
         self.id_teacher = id_teacher
-        self.administrator = administrator
+        self.admin = admin
         self.assignatures = assignatures
     
     def register_student(self):
-        if self.administrator == True:
-            # You can register students
+        if self.admin == True: # You can register students
             pass
-        else:
-            # You can't register students
+        else: # You can't register students
             pass
 
     def register_assignature(self):
-        if self.administrator == True:
-            # You can register assignatures
+        if self.admin == True: # You can register assignatures
             pass
-        else:
-            # You can't register assignatures
+        else: # You can't register assignatures
             pass
         
 class Course:
