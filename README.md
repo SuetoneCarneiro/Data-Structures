@@ -1,2 +1,2 @@
 # Data Structures
- Data Structures projects and exercices 
+ Data Structures projects and exercises 
