@@ -15,7 +15,6 @@ class Student:
     def see_enrolled_assignatures(self):
         pass
 
-
 class Teacher:
     def __init__(self, name, id_teacher, admin, assignatures):
         self.name = name
