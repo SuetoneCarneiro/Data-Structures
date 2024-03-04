@@ -37,7 +37,6 @@ class CurrentAccount:
     def __str__(self) -> str:
         return f'Name: {self.name}\nNumber: {self.number}\nBalance: ${self.balance}'
 
-
 # Tests area 
 
 name = str(input('Name of the owner of the bank account: '))
