@@ -26,7 +26,8 @@ class Videogame:
 vg1 = Videogame(data_fabricacao='2024-02-24', marca='Microsoft', modelo='Xbox One')
 vg2 = Videogame(marca='Sony', modelo='PlayStation 2', data_fabricacao='2024-01-02',
                 capacidadeHD='100GB', jogos='GTA SAN ANDREAS, BOMBA PATCH FOREVER, MIDNIGHT CLUB 3, GUITAR HERO BRAZUCAS', garantia='Eterna')
-
+vg3 = Videogame()
 
 print('Video game 1: ', vg1)
 print('Video game 2: ', vg2)
+print('Video game 3: ', vg3)
