@@ -24,6 +24,6 @@ class Array:
         return self.get(position)
     
     def copy_from(self, another_array):
-        for i in range(another_array.len):
+        for i in range(another_array.   len):
             self.set(i, another_array.get(i))
     
