@@ -125,4 +125,34 @@ class Node:
         self.proximo = proximo
 
 class FilaEncadeada(Fila):
-    pass
+    
+    def __init__(self):
+        self._quantidade = 0
+        self._inicio: Node = None
+        self._fim: Node = None
+
+    @property
+    def vazia(self):
+        return self._inicio is None
+    
+    def enfileirar(self, elemento):
+        novo = Node(elemento)
+        if self.vazia:
+            self._inicio = novo
+            self._fim = self._inicio
+        else:
+            self._fim.proximo = novo
+            self._fim = novo
+        self._quantidade += 1
+
+    def desenfileirar(self):
+        if self.vazia:
+            raise FilaVazia()
+        v = self._inicio.valor
+        self._inicio = self._inicio.proximo
+        self._quantidade -= 1
+        return v
+    
+    def imprimir(self):
+        return super().imprimir()
+
