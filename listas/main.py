@@ -1,4 +1,4 @@
-from lista import ListaSimples, ListaSequencial
+from lista import ListaSimples, ListaSequencial, ListaEncadeada
 
 def teste_lista_simples():
     l = ListaSimples()
@@ -38,6 +38,50 @@ def teste_lista_sequencial():
     assert l[0] == "funciona"
     print('Lista sequencial - OK')
 
+def teste_lista_encadeada():
+    l = ListaEncadeada()
+    assert l.vazia
+    assert l.cheia == False
+    l.inserir(1000, "abc")
+    assert l.vazia == False
+    assert l[0] == "abc"
+    l.inserir(1000, "def")
+    assert l[1] == "def"
+    l.inserir(1000, "fgh")
+    assert l[2] == "fgh"
+    l.inserir(1, "funciona")
+    assert l[1] == "funciona"
+    assert l[2] == "def"
+    l.inserir(0, "xpto")
+    assert l[0] == "xpto"
+    assert len(l) == 5
+    l.remover(0)
+    assert l[0] == "abc"
+    l.remover(1)
+    assert l[1] == "def"
+    assert len(l) == 3
+    l.remover(2)
+    assert len(l) == 2
+    l.remover(0)
+    assert len(l) == 1
+    assert l[0] == "def"
+    l.remover(0)
+    assert l.vazia
+    l.inserir(1000, "1")
+    l.inserir(1001, "2")
+    l.inserir(2, "3")
+    assert l[0] == "1"
+    assert l[1] == "2"
+    assert l[2] == "3"
+    l[0] = "r"
+    l[1] = "p"
+    l[2] = "m"
+    assert l[0] == "r"
+    assert l[1] == "p"
+    assert l[2] == "m"
+    print('Lista Encadeada - OK')
+
 if __name__ == '__main__':
     teste_lista_simples()
     teste_lista_sequencial()
+    teste_lista_encadeada()

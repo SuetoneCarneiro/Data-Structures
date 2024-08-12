@@ -170,7 +170,7 @@ class ListaEncadeada(Lista):
             no = no.proximo
         return no
     
-    def _get_antecessor(self, posicao):
+    def get_antecessor(self, posicao):
         return self._get_no_indice(posicao - 1)
     
     def inserir(self, posicao, valor):
@@ -182,7 +182,7 @@ class ListaEncadeada(Lista):
             novo.proximo = self.head
             self.head = novo
         else:
-            antecessor = self._get_antecessor(posicao)
+            antecessor = self.get_antecessor(posicao)
             novo.proximo = antecessor.proximo
             antecessor.proximo = novo
 
