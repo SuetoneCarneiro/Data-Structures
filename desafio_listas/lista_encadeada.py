@@ -44,99 +44,6 @@ class Lista:
     def __setitem__(self, posicao, valor):
         self.atribuir(posicao, valor)
 
-    
-
-class ListaSimples(Lista):
-
-    def __init__(self) -> None:
-        self._dados = []
-
-    @property
-    def vazia(self):
-        return len(self) == 0
-    
-    def __len__(self):
-        return len(self._dados)
-    
-    def __str__(self):
-        return str(self._dados)
-    
-    def inserir(self, posicao, valor):
-        self._dados.insert(posicao, valor)
-
-    def remover(self, posicao):
-        self._dados.pop(posicao)
-
-    def obter(self, posicao):
-        return self._dados[posicao]
-    
-
-class ListaSequencial(Lista):
-    
-    def __init__(self, tamanho = 10):
-        self._quantidade: int = 0
-        self._dados = Array(tamanho)
-
-    @property
-    def cheia(self):
-        return self._quantidade == self._dados.tamanho
-    
-    @property
-    def vazia(self):
-        return len(self) == 0
-    
-    def __len__(self):
-        return self._quantidade
-    
-    def __str__(self):
-        s = '['
-        for i in range(self._quantidade):
-            s += repr(self._dados[i])
-            if i < self._quantidade - 1:
-                s += ', '
-
-        s += ']'
-        return s
-    
-    def _deslocar_direita(self, posicao):
-        for i in range(self._quantidade, posicao, -1):
-            self._dados[i] = self._dados[i - 1]
-
-    def _deslocar_esquerda(self, posicao):
-        for i in range(posicao, self._quantidade - 1):
-            self._dados[i] = self._dados[i + 1]
-
-    def _get_posicao(self, posicao):
-        if posicao < 0:
-            return len(self) - posicao
-        return posicao
-    
-    def inserir(self, posicao, valor):
-        posicao = self._get_posicao(posicao)
-        if self.cheia:
-            raise ListaCheiaExeption()
-        
-        if posicao >= len(self):
-            self._dados[self._quantidade] = valor
-        else:
-            self._deslocar_direita(posicao)
-            self._dados[posicao] = valor
-
-        self._quantidade += 1
-
-    def obter(self, posicao):
-        posicao = self._get_posicao(posicao)
-        return self._dados[posicao]
-
-    def remover(self, posicao):
-        if self.vazia:
-            raise ListaVaziaException()
-        
-        posicao = self._get_posicao(posicao)
-        if posicao < len(self):
-            self._deslocar_esquerda(posicao)
-        self._quantidade -= 1
-
 
 class Node:
     
@@ -231,3 +138,51 @@ class ListaEncadeada(Lista):
         posicao = self._get_posicao(posicao)
         no = self._get_no_indice(posicao)
         no.valor = valor
+
+    # QUESTÃO 1 -----------------------
+    def intersecao(lista1, lista2):
+        new_list = ListaEncadeada()
+        for i in range(len(lista1)):
+            if lista1.obter(i) in lista2:
+                new_list.inserir(100, lista1.obter(i))
+
+        return new_list
+
+    def uniao(lista1, lista2):
+        new_list = ListaEncadeada()
+        for i in range(len(lista1)):
+            if lista1.obter(i) not in new_list:
+                new_list.inserir(100, lista1.obter(i))
+            if lista2.obter(i) not in new_list:
+                new_list.inserir(100, lista2.obter(i))
+            
+        return new_list
+
+    def diferenca(lista1, lista2):
+        new_list = ListaEncadeada()
+        for i in range(len(lista1)):
+            if lista1.obter(i) not in lista2:
+                new_list.inserir(100, lista1.obter(i))
+
+        return new_list
+    
+    # QUESTÃO 2 -----------------------------
+    def remover_duplicidades(self):
+        ...         
+
+    # QUESTÃO 3 -----------------------------
+    def maiores_que(self, valor):
+        new_list = ListaEncadeada()
+        for i in range(len(self)):
+            if self.obter(i) > valor:
+                new_list.inserir(1000, self.obter(i))
+        
+        return new_list
+
+    #QUESTÃO 4 ------------------------------
+    def map(self, func):
+        new_list = ListaEncadeada()
+        for element in self:
+            new_list.inserir(100, func(element))
+        
+        return new_list
