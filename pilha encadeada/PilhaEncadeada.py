@@ -102,6 +102,14 @@ class PilhaEncadeada:
         while atual.proximo != None:
             atual = atual.proximo
         return atual.valor
+    
+    def obtem(self, pos):
+        if pos > self._tamanho:
+            raise IndexError()
+        atual = self._topo
+        for _ in range(pos):
+            atual = atual.proximo
+        return atual.valor
 
     @property
     def subTopo(self):
