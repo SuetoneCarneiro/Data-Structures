@@ -154,5 +154,9 @@ class FilaEncadeada(Fila):
         return v
     
     def imprimir(self):
-        return super().imprimir()
+        cursor = self._inicio
+        while cursor != None:
+            print(f'{cursor.valor}', end=' ')
+            cursor = cursor.proximo
+            
 

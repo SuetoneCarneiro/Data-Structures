@@ -82,6 +82,7 @@ class ListaEncadeada(Lista):
     
     def inserir(self, posicao, valor):
         posicao = self._get_posicao(posicao)
+        print(posicao)
         novo = Node(valor)
         if self.vazia:
             self.head = novo
@@ -126,7 +127,7 @@ class ListaEncadeada(Lista):
 
     def _get_posicao(self, posicao):
         if posicao < 0:
-            return len(self) - posicao
+            return len(self) - abs(posicao)
         return posicao
 
     def obter(self, posicao):
